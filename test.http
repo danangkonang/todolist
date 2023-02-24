@@ -1,0 +1,59 @@
+GET http://localhost:9000/activity-groups
+###
+GET http://localhost:9000/activity-groups/2
+###
+POST http://localhost:9000/activity-groups
+Content-Type: application/json
+
+{
+  "title": "test update",
+  "email": "email@email.com"
+}
+###
+PATCH http://localhost:9000/activity-groups/1
+Content-Type: application/json
+
+{
+  "title": "test update 2"
+}
+###
+DELETE http://localhost:9000/activity-groups/1
+###
+
+
+
+###
+###
+
+
+
+DELETE http://localhost:9000/todo-items/1
+Content-Type: application/json
+
+{
+  "title": "testing"
+}
+###
+PATCH http://localhost:9000/todo-items/1
+Content-Type: application/json
+
+{
+  "title": "testing",
+  "priority": "very-high",
+  "is_active": true
+}
+###
+POST http://localhost:9000/todo-items
+Content-Type: application/json
+
+{
+  "title": "item",
+  "activity_group_id": 1,
+  "is_active": true,
+  "priority": "very-high"
+}
+###
+GET http://localhost:9000/todo-items/2
+###
+GET http://localhost:9000/todo-items?activity_group_id=1
+###
