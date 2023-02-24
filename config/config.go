@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"time"
 
 	_ "time/tzdata"
 
@@ -30,5 +31,12 @@ func Connection(user, password, host, port, dbname string) *DB {
 	if err != nil {
 		panic(err)
 	}
+	pl, _ := db.DB()
+	if err != nil {
+		panic(err)
+	}
+	pl.SetMaxIdleConns(10)
+	pl.SetMaxOpenConns(80)
+	pl.SetConnMaxLifetime(time.Hour)
 	return &DB{Mysql: db}
 }
